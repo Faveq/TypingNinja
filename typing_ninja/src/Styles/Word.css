@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
+.word{
+   margin: 0;
+   user-select: none;
+   font-family: 'Comfortaa', sans-serif;
+   font-size: xx-large;
+   display: flex;
+   gap: 0pt;
+   padding: 0;
+   color: rgba(115, 115, 115, 0.515);
+}
+.correct{
+   color:rgba(219, 219, 219, 0.515);
+}
+
+.letter{
+
+}

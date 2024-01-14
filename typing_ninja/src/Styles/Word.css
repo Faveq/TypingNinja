@@ -13,7 +13,12 @@
 .correct{
    color:rgba(219, 219, 219, 0.515);
 }
-
+.incorrect{
+   color: rgba(208, 61, 8, 0.987);
+}
+.overtyped{
+   color: rgba(208, 61, 8, 0.601);
+}
 .letter{
 
 }

@@ -2,13 +2,14 @@
 
 .letter-input{
     position: absolute;
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 0.635);
     border: none;
     height: 35px;
-    caret-color: rgb(255, 242, 0);
+    caret-color: rgba(255, 255, 255, 0);
     font-family: 'Comfortaa', sans-serif;
     font-size: xx-large;
     padding: 0;
     margin: 0;
-
+    opacity: 30%;
+    top: 750px;
 }

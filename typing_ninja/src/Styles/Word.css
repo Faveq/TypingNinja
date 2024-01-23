@@ -1,24 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
 
-.word{
-   margin: 0;
-   user-select: none;
-   font-family: 'Comfortaa', sans-serif;
-   font-size: xx-large;
-   display: flex;
-   gap: 0pt;
-   padding: 0;
-   color: rgba(115, 115, 115, 0.515);
+.word {
+  margin: 0;
+  user-select: none;
+  font-family: "Comfortaa", sans-serif;
+  font-size: xx-large;
+  display: flex;
+  position: relative;
+  gap: 0pt;
+  padding: 0;
+  color: rgba(115, 115, 115, 0.515);
 }
-.correct{
-   color:rgba(219, 219, 219, 0.515);
+.correct {
+  color: rgba(219, 219, 219, 0.515);
 }
-.incorrect{
-   color: rgba(208, 61, 8, 0.987);
+.incorrect {
+  color: rgba(208, 61, 8, 0.987);
 }
-.overtyped{
-   color: rgba(208, 61, 8, 0.601);
+.overtyped {
+  color: rgba(208, 61, 8, 0.601);
 }
-.letter{
+
+#active-letter::before {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 35px;
+  background-color: rgb(0, 132, 255);
+  animation: blink linear 2.5s infinite;
+}
+
+@keyframes blink {
+   0%{
+      opacity: 100%;
+   }
+   12.5%{
+      opacity: 75%;
+   }
+   25%{
+      opacity: 50%;
+   }
+   37.5%{
+      opacity: 25%;
+   }
+   50%{
+      opacity: 0%;
+   }
+   62.5%{
+      opacity: 25%;
+   }
+   75%{
+      opacity: 50%;
+   }
+   87.5%{
+      opacity: 75%;
+   }
+   100%{
+      opacity: 100%;
+   }
+
 
 }

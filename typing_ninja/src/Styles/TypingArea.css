@@ -3,6 +3,6 @@
     flex-wrap: wrap;
     gap: 8pt;
     width: 60vw;
-    height: auto;
-    
+    position: relative;
+    height: auto; 
 }

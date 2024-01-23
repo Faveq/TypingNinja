@@ -10,6 +10,17 @@
     font-size: xx-large;
     padding: 0;
     margin: 0;
-    opacity: 30%;
+    opacity: 0%;
+    cursor: default;
     top: 750px;
+}
+.words-amount-option{
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    font-family: 'Comfortaa', sans-serif;
+    cursor: pointer;
+    font-size: 1em;
+}
+.selected{
+    color: rgb(0, 132, 255);
 }

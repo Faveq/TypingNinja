@@ -7,20 +7,19 @@ import "../../Styles/WordsCounter.css";
 import Input from "../Input";
 import WordsCounter from "../WordsCounter";
 import useStopwatch from "./StopWatch";
-import useCalculateWPM from "./CalculateWPM";
 
 const TypingArea = (props) => {
   const [words, setWords] = useState(props.words);
   const [defaultWords, setDefaultWords] = useState(props.words);
   const [input, setInput] = useState("");
   const [activeWordIndex, setActiveWordIndex] = useState(0);
-  const [uncorrectedErrorsAmount, setUncorrectedErrorsAmount] = useState(0);
+  const [uncorrectedErrorsAmount, setUncorrectedErrorsAmount] = useState(-1);
   const [typedLettersAmount, setTypedLettersAmount] = useState(0);
-  const { elapsedTime, isRunning, startStop, reset } = useStopwatch();
-  const { grossWPM, netWPM, calculateGrossWPM, calculateNetWPM } =
-    useCalculateWPM();
-  const inputRef = useRef(null);
   const [typingFinished, setTypingFinished] = useState(false);
+  const { elapsedTime, isRunning, startStop, reset } = useStopwatch();
+
+  const inputRef = useRef(null);
+  const {handleTypingStats} = props
 
   useEffect(() => {
     window.addEventListener("keydown", handleFocus);
@@ -31,8 +30,11 @@ const TypingArea = (props) => {
   }, []);
 
   const changeHandler = (event) => {
-    setInput(event.target.value);     
-    checkWord(event);
+    if(activeWordIndex < words.length)
+    {
+      setInput(event.target.value);     
+      checkWord(event);
+    }
   };
 
   const checkWord = (event) => {
@@ -47,8 +49,10 @@ const TypingArea = (props) => {
     } else if (
       activeWordIndex === words.length - 1 &&
       words[activeWordIndex] === event.target.value
-    ) {
+    ) 
+    {
       handleTypingFinish();
+      handleNextWord()
     }
 
     if (currentTypedChar === currentWordChar) {
@@ -75,23 +79,10 @@ const TypingArea = (props) => {
   };
 
   useEffect(() => {
-    if(activeWordIndex === words.length - 1)
-    {
-      console.log(elapsedTime)
-      console.log(uncorrectedErrorsAmount)
-      console.log(typedLettersAmount)
-      console.log(calculateGrossWPM(elapsedTime, uncorrectedErrorsAmount, typedLettersAmount));
-      console.log(calculateNetWPM(elapsedTime, uncorrectedErrorsAmount, typedLettersAmount));
-    }
-
-    return () => {
-    };
-  }, [uncorrectedErrorsAmount]);
-
-  useEffect(() => {
     let allWords = document.getElementsByClassName("word");
     let tempErrorsAmount = 0
-    if (activeWordIndex === words.length - 1) {
+  
+    if (activeWordIndex === words.length) {
       Array.from(allWords).forEach((word) => {
         Array.from(word.children).forEach((letter) => {
           if(!letter.classList.contains('correct'))
@@ -100,9 +91,20 @@ const TypingArea = (props) => {
           }
         });
       });
+      setUncorrectedErrorsAmount(tempErrorsAmount)
+
     }
-    setUncorrectedErrorsAmount(tempErrorsAmount)
   }, [typingFinished]);
+
+  useEffect(() => {
+    if(typingFinished)
+    {
+      handleTypingStats(elapsedTime, uncorrectedErrorsAmount, typedLettersAmount)
+    }
+    return () => {
+    };
+  }, [uncorrectedErrorsAmount]);
+
 
   const updateWord = (value, deleting) => {
     if (deleting) {
@@ -119,8 +121,16 @@ const TypingArea = (props) => {
     }
   };
 
+
   const handleNextWord = () => {
-    setActiveWordIndex((prevIndex) => prevIndex + 1);
+    if(activeWordIndex < words.length - 1)
+    {
+      setActiveWordIndex((prevIndex) => prevIndex + 1);
+    }else if (activeWordIndex === words.length - 1)
+    {
+      setActiveWordIndex((prevIndex) => prevIndex + 1);
+      handleTypingFinish()
+    }
     setInput("");
   };
 
@@ -133,7 +143,7 @@ const TypingArea = (props) => {
   const onKeyPress = (event) => {
     const wordElement = document.getElementsByClassName("active")[0];
 
-    if(event.key !== "Backspace" && event.key !== " ")
+    if(event.key !== "Backspace" && event.key !== "Shift")
     {
       setTypedLettersAmount(typedLettersAmount => typedLettersAmount + 1)
     }
@@ -171,11 +181,11 @@ const TypingArea = (props) => {
         <Word
           key={index}
           word={word}
-          className={index === activeWordIndex ? "word active" : "word"}
+          className={index === activeWordIndex && !typingFinished? "word active" : "word"}
           defaultWordLength={defaultWords[index].length}
           misspelled={input !== defaultWords[activeWordIndex]}
           activeLetterIndex={input.length}
-          isWordActive={index === activeWordIndex}
+          isWordActive={index === activeWordIndex && !typingFinished}
         />
       ))}
 

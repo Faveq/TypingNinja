@@ -1,8 +1,8 @@
 .typing-area{
     display: flex;
     flex-wrap: wrap;
-    gap: 8pt;
-    width: 60vw;
+    gap: 6pt;
+    width: 50vw;
     position: relative;
     height: auto; 
 }

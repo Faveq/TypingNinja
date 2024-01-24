@@ -4,7 +4,7 @@ const useCalculateWPM = () => {
   const [grossWPM, setGrossWPM] = useState(0);
   const [netWPM, setNetWPM] = useState(0);
 
-  const calculateGrossWPM = (elapsedSeconds, uncorrectedErrors, typedLettersAmount) => {
+  const calculateGrossWPM = (elapsedSeconds, typedLettersAmount) => {
     if (!typedLettersAmount || !elapsedSeconds) {
       console.error("Missing data for calculations");
       return;
@@ -20,8 +20,8 @@ const useCalculateWPM = () => {
       console.error("Missing data for calculations");
       return;
     } else {
-      const newGrossWPM = calculateGrossWPM(elapsedSeconds, uncorrectedErrors, typedLettersAmount);
-      const newNetWPM = newGrossWPM - uncorrectedErrors * (elapsedSeconds / 60); //do poprawy, zle liczy
+      const newGrossWPM = calculateGrossWPM(elapsedSeconds, typedLettersAmount);
+      const newNetWPM = (typedLettersAmount/5 - uncorrectedErrors) / (elapsedSeconds / 60); //do poprawy, zle liczy
       setNetWPM(newNetWPM);
       return newNetWPM;
     }

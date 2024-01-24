@@ -1,8 +1,22 @@
 body{
-    height: 100vh;
     background-color: #323437;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+}
+.app{
+    
+}
+.summary{
+    position: absolute;
+}
+.typing-area{
+
+}
+.words-amount-selection{
+    margin-bottom: 30pt;
+    padding: 0;
+}
+.words-amount-selection > button{
+    padding: 0px;
+}
+.hide{
+    visibility: hidden;
 }

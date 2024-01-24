@@ -3,7 +3,7 @@ import '../Styles/WordsAmountSelection.css'
 import Button from './Button'
 const WordsAmountSelection = (props) =>
 {
-    const buttonsValues = [5, 25, 50, 100]
+    const buttonsValues = [10, 25, 50, 100]
 
     const {currentWordsAmount, passNewWordsAmount} = props
 

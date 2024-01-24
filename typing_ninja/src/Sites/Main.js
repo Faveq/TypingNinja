@@ -2,12 +2,17 @@ import React, { useState, useEffect } from "react";
 import TypingArea from "../Components/TypingArea/TypingArea";
 import "../Styles/Main.css";
 import WordsAmountSelection from "../Components/WordsAmountSelection";
+import Summary from "../Components/Summary/Summary";
 
 const Main = (props) => {
   const [allWords, setAllWords] = useState([]);
   const [dataReady, setDataReady] = useState(false);
   const [wordsAmount, setWordsAmount] = useState(10);
   const [wordsToPass, setWordsToPass] = useState([]);
+  const [uncorrectedErrorsAmount, setUncorrectedErrorsAmount] = useState(-1);
+  const [typedLettersAmount, setTypedLettersAmount] = useState(0);
+  const [elapsedSeconds, setElapsedSeconds] = useState(0);
+  const [typingFinished, setTypingFinished] = useState(false);
 
   useEffect(() => {
     setDataReady(false);
@@ -33,14 +38,14 @@ const Main = (props) => {
     if (allWords.length > 0) {
       randomizeWords();
     }
-  }, [allWords, wordsAmount]);
-
+  }, [dataReady, allWords]);
 
   const randomizeWords = () => {
-    if (allWords && allWords.length > 0) {
+    if (allWords) {
       let tempArray = [];
       for (let i = 0; i < wordsAmount; i++) {
-        const randomIndex = Math.floor(Math.random() * allWords.length) % allWords.length;
+        const randomIndex =
+          Math.floor(Math.random() * allWords.length) % allWords.length;
         tempArray[i] = allWords[randomIndex];
       }
       setWordsToPass(tempArray);
@@ -53,24 +58,41 @@ const Main = (props) => {
   const handleNewWordsAmount = (passedWordsAmount) => {
     if (passedWordsAmount !== 0) {
       setDataReady(false);
-      setWordsAmount(passedWordsAmount)
+      setWordsAmount(passedWordsAmount);
     }
   };
 
+  const handleTypingStats = (
+    _elapsedSeconds,
+    _uncorrectedErrorsAmount,
+    _typedLettersAmount
+  ) => {
+    setElapsedSeconds(_elapsedSeconds);
+    setUncorrectedErrorsAmount(_uncorrectedErrorsAmount);
+    setTypedLettersAmount(_typedLettersAmount);
+    setTypingFinished(true)
+  };
+
   return (
-    <div>
-      <WordsAmountSelection
-        currentWordsAmount={wordsAmount}
-        passNewWordsAmount={handleNewWordsAmount}
-      />
-      <br />
-      <br />
-      <br />
-      {dataReady ? (
-        <TypingArea words={wordsToPass} defaultWords={wordsToPass} />
-      ) : (
-        <p>Loading...</p>
-      )}
+    <div className="app">
+      <div className={typingFinished ? "summary show" : "summary hide"}>
+        <Summary elapsedSeconds = {elapsedSeconds} uncorrectedErrorsAmount = {uncorrectedErrorsAmount} typedLettersAmount={typedLettersAmount}/>
+      </div>
+      <div className={!typingFinished ? "typing-area show" : "typing-area hide"}>
+        <WordsAmountSelection className="words-amount-selection"
+          currentWordsAmount={wordsAmount}
+          passNewWordsAmount={handleNewWordsAmount}
+        />
+        {dataReady ? (
+          <TypingArea
+            words={wordsToPass}
+            defaultWords={wordsToPass}
+            handleTypingStats={handleTypingStats}
+          />
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
     </div>
   );
 };

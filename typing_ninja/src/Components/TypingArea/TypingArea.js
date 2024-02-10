@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import Word from "../Word";
 import "../../Styles/Word.css";
 import "../../Styles/TypingArea.css";
@@ -7,6 +7,7 @@ import "../../Styles/WordsCounter.css";
 import Input from "../Input";
 import WordsCounter from "../WordsCounter";
 import useStopwatch from "./StopWatch";
+import Context from "../Context";
 
 const TypingArea = (props) => {
   const [words, setWords] = useState(props.words);
@@ -17,12 +18,18 @@ const TypingArea = (props) => {
   const [typedLettersAmount, setTypedLettersAmount] = useState(0);
   const [typingFinished, setTypingFinished] = useState(false);
   const { elapsedTime, isRunning, startStop, reset } = useStopwatch();
+  const clickSoundIndex = useContext(Context);
+  const [clickSound, setClickSound] = useState();
+  
 
   const inputRef = useRef(null);
-  const {handleTypingStats} = props
+  const {handleTypingStats, className} = props
+
+  const clickSoundsPaths = ["none_sound.wav", "osu_sound.wav","click_sound.wav"]
 
   useEffect(() => {
     window.addEventListener("keydown", handleFocus);
+    setClickSound(new Audio("Sounds/" + clickSoundsPaths[clickSoundIndex]))   
 
     return () => {
       window.removeEventListener("keydown", handleFocus);
@@ -73,15 +80,17 @@ const TypingArea = (props) => {
     }
   };
 
-  const handleTypingFinish = () => {
-    startStop();
-    setTypingFinished(true);
-  };
-
+  useEffect(() => {
+    if(clickSoundIndex <= clickSoundsPaths.length)
+    {
+      setClickSound(new Audio("Sounds/" + clickSoundsPaths[clickSoundIndex]))   
+    }
+  }, [clickSoundIndex]);
+  
   useEffect(() => {
     let allWords = document.getElementsByClassName("word");
     let tempErrorsAmount = 0
-  
+    
     if (activeWordIndex === words.length) {
       Array.from(allWords).forEach((word) => {
         Array.from(word.children).forEach((letter) => {
@@ -92,10 +101,10 @@ const TypingArea = (props) => {
         });
       });
       setUncorrectedErrorsAmount(tempErrorsAmount)
-
+      
     }
   }, [typingFinished]);
-
+  
   useEffect(() => {
     if(typingFinished)
     {
@@ -104,8 +113,12 @@ const TypingArea = (props) => {
     return () => {
     };
   }, [uncorrectedErrorsAmount]);
-
-
+  
+  const handleTypingFinish = () => {
+    startStop();
+    setTypingFinished(true);
+  };
+  
   const updateWord = (value, deleting) => {
     if (deleting) {
       const newWords = [...words];
@@ -140,15 +153,25 @@ const TypingArea = (props) => {
     }
   };
 
+  const playSound = () =>
+  {
+      clickSound.play()
+  }
+
   const onKeyPress = (event) => {
+    console.log(clickSoundsPaths[clickSoundIndex])
     const wordElement = document.getElementsByClassName("active")[0];
 
-    if(event.key !== "Backspace" && event.key !== "Shift")
+    
+    
+    if(event.key !== "Backspace" && event.key !== "Shift" && event.key !== "Tab")
     {
       setTypedLettersAmount(typedLettersAmount => typedLettersAmount + 1)
+      playSound()
     }
 
     if (event.key === " ") {
+
       if (!input.endsWith(" ")) {
         event.preventDefault();
         handleNextWord();

@@ -1,14 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
 
 .word {
   margin: 0;
   user-select: none;
   font-family: "Comfortaa", sans-serif;
-  font-size: 2em;
   display: flex;
   position: relative;
   gap: 0pt;
   padding: 0;
+  height: fit-content;
   color: rgba(115, 115, 115, 0.515);
 }
 .correct {
@@ -20,12 +20,15 @@
 .overtyped {
   color: rgba(208, 61, 8, 0.601);
 }
-
+.letter{
+   font-size: 1.5em;
+}
 #active-letter::before {
   content: "";
   position: absolute;
   width: 2px;
-  height: 35px;
+  height: 28px;
+  top: 4px;
   background-color: rgb(0, 132, 255);
   animation: blink linear 2.5s infinite;
 }

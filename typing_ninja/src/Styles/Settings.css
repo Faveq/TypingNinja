@@ -1,0 +1,31 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+.container{
+    position: relative;
+    top: 5vh;
+}
+.sound-buttons{
+    display: flex;
+    gap: 1vw;
+}
+.settings-btn{
+    border: none;
+    border-color: rgb(0, 132, 255);
+    color: rgb(0, 132, 255);
+    width: 70pt;
+    height: 30pt;
+    background-color: #ffffff00;
+    transition: all .3s;
+}
+.settings-btn:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 0.5em 0.5em -0.4em rgb(0, 132, 255);
+}
+.sound-buttons>.active{
+    background-color: rgba(0, 132, 255, 0.784);
+    color: #323437;
+}
+h3{
+    color: rgb(192, 192, 192);
+}

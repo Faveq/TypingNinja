@@ -20,16 +20,20 @@ const TypingArea = (props) => {
   const { elapsedTime, isRunning, startStop, reset } = useStopwatch();
   const clickSoundIndex = useContext(Context);
   const [clickSound, setClickSound] = useState();
-  
+  const [isFirstClick, setIsFirstClick] = useState(true);
 
   const inputRef = useRef(null);
-  const {handleTypingStats, className} = props
+  const { handleTypingStats, className } = props;
 
-  const clickSoundsPaths = ["none_sound.wav", "osu_sound.wav","click_sound.wav"]
+  const clickSoundsPaths = [
+    "none_sound.wav",
+    "osu_sound.wav",
+    "click_sound.wav",
+  ];
 
   useEffect(() => {
     window.addEventListener("keydown", handleFocus);
-    setClickSound(new Audio("Sounds/" + clickSoundsPaths[clickSoundIndex]))   
+    setClickSound(new Audio("Sounds/" + clickSoundsPaths[clickSoundIndex]));
 
     return () => {
       window.removeEventListener("keydown", handleFocus);
@@ -37,11 +41,83 @@ const TypingArea = (props) => {
   }, []);
 
   const changeHandler = (event) => {
-    if(activeWordIndex < words.length)
-    {
-      setInput(event.target.value);     
+    if (activeWordIndex < words.length) {
+      setInput(event.target.value);
       checkWord(event);
     }
+  };
+
+  useEffect(() => {
+    if (clickSoundIndex <= clickSoundsPaths.length) {
+      setClickSound(new Audio("Sounds/" + clickSoundsPaths[clickSoundIndex]));
+    }
+  }, [clickSoundIndex]);
+
+  useEffect(() => {
+    let allWords = document.getElementsByClassName("word");
+    let tempErrorsAmount = 0;
+
+    if (activeWordIndex === words.length) {
+      Array.from(allWords).forEach((word) => {
+        Array.from(word.children).forEach((letter) => {
+          if (!letter.classList.contains("correct")) {
+            tempErrorsAmount++;
+          }
+        });
+      });
+      setUncorrectedErrorsAmount(tempErrorsAmount);
+    }
+  }, [typingFinished]);
+
+  useEffect(() => {
+    if (typingFinished) {
+      handleTypingStats(
+        elapsedTime,
+        uncorrectedErrorsAmount,
+        typedLettersAmount
+      );
+    }
+    return () => {};
+  }, [uncorrectedErrorsAmount]);
+
+  const updateWord = (value, deleting) => {
+    if (deleting) {
+      const newWords = [...words];
+      newWords[activeWordIndex] = newWords[activeWordIndex].substring(
+        0,
+        value.length - 1
+      );
+      setWords(newWords);
+    } else {
+      const newWords = [...words];
+      newWords[activeWordIndex] += value;
+      setWords(newWords);
+    }
+  };
+
+  const handleFocus = () => {
+    if (document.activeElement !== inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
+  const playSound = () => {
+    clickSound.play();
+  };
+
+  const handleTypingFinish = () => {
+    startStop();
+    setTypingFinished(true);
+  };
+
+  const handleNextWord = () => {
+    if (activeWordIndex < words.length - 1) {
+      setActiveWordIndex((prevIndex) => prevIndex + 1);
+    } else if (activeWordIndex === words.length - 1) {
+      handleTypingFinish();
+      setActiveWordIndex((prevIndex) => prevIndex + 1);
+    }
+    setInput("");
   };
 
   const checkWord = (event) => {
@@ -51,15 +127,11 @@ const TypingArea = (props) => {
     const activeWord = document.getElementsByClassName("active")[0];
     const letterIndex = event.target.value.length - 1;
 
-    if (activeWordIndex === 0 && event.target.value.length === 1) {
-      startStop();
-    } else if (
+    if (
       activeWordIndex === words.length - 1 &&
       words[activeWordIndex] === event.target.value
-    ) 
-    {
-      handleTypingFinish();
-      handleNextWord()
+    ) {
+      handleNextWord();
     }
 
     if (currentTypedChar === currentWordChar) {
@@ -80,98 +152,24 @@ const TypingArea = (props) => {
     }
   };
 
-  useEffect(() => {
-    if(clickSoundIndex <= clickSoundsPaths.length)
-    {
-      setClickSound(new Audio("Sounds/" + clickSoundsPaths[clickSoundIndex]))   
-    }
-  }, [clickSoundIndex]);
-  
-  useEffect(() => {
-    let allWords = document.getElementsByClassName("word");
-    let tempErrorsAmount = 0
-    
-    if (activeWordIndex === words.length) {
-      Array.from(allWords).forEach((word) => {
-        Array.from(word.children).forEach((letter) => {
-          if(!letter.classList.contains('correct'))
-          {
-            tempErrorsAmount++
-          }
-        });
-      });
-      setUncorrectedErrorsAmount(tempErrorsAmount)
-      
-    }
-  }, [typingFinished]);
-  
-  useEffect(() => {
-    if(typingFinished)
-    {
-      handleTypingStats(elapsedTime, uncorrectedErrorsAmount, typedLettersAmount)
-    }
-    return () => {
-    };
-  }, [uncorrectedErrorsAmount]);
-  
-  const handleTypingFinish = () => {
-    startStop();
-    setTypingFinished(true);
-  };
-  
-  const updateWord = (value, deleting) => {
-    if (deleting) {
-      const newWords = [...words];
-      newWords[activeWordIndex] = newWords[activeWordIndex].substring(
-        0,
-        value.length - 1
-      );
-      setWords(newWords);
-    } else {
-      const newWords = [...words];
-      newWords[activeWordIndex] += value;
-      setWords(newWords);
-    }
-  };
-
-
-  const handleNextWord = () => {
-    if(activeWordIndex < words.length - 1)
-    {
-      setActiveWordIndex((prevIndex) => prevIndex + 1);
-    }else if (activeWordIndex === words.length - 1)
-    {
-      setActiveWordIndex((prevIndex) => prevIndex + 1);
-      handleTypingFinish()
-    }
-    setInput("");
-  };
-
-  const handleFocus = () => {
-    if (document.activeElement !== inputRef.current) {
-      inputRef.current.focus();
-    }
-  };
-
-  const playSound = () =>
-  {
-      clickSound.play()
-  }
-
   const onKeyPress = (event) => {
-    console.log(clickSoundsPaths[clickSoundIndex])
     const wordElement = document.getElementsByClassName("active")[0];
 
-    
-    
-    if(event.key !== "Backspace" && event.key !== "Shift" && event.key !== "Tab")
-    {
-      setTypedLettersAmount(typedLettersAmount => typedLettersAmount + 1)
-      playSound()
+    if (isFirstClick) {
+      startStop();
+      setIsFirstClick(false);
+    }
+
+    if (
+      event.key !== "Backspace" &&
+      event.key !== "Shift" &&
+      event.key !== "Tab"
+    ) {
+      setTypedLettersAmount((typedLettersAmount) => typedLettersAmount + 1);
+      playSound();
     }
 
     if (event.key === " ") {
-
       if (!input.endsWith(" ")) {
         event.preventDefault();
         handleNextWord();
@@ -204,7 +202,11 @@ const TypingArea = (props) => {
         <Word
           key={index}
           word={word}
-          className={index === activeWordIndex && !typingFinished? "word active" : "word"}
+          className={
+            index === activeWordIndex && !typingFinished
+              ? "word active"
+              : "word"
+          }
           defaultWordLength={defaultWords[index].length}
           misspelled={input !== defaultWords[activeWordIndex]}
           activeLetterIndex={input.length}

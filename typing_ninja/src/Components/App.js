@@ -9,23 +9,19 @@ const App = () => {
   const [cookies, setCookie] = useCookies(["clickSoundIndexCookie"]);
   const [refreshKey, setRefreshKey] = useState(0);
 
-    useEffect(() => {
-        if(cookies.clickSoundIndexCookie === undefined)
-        {
-            setCookie("clickSoundIndexCookie", 1, { path: "/" });
-        }
-        
-    }, []);
-
-
-    const handleRefresh = () => {
-      setRefreshKey((prevKey) => prevKey + 1);
-    };
-
-    const updateSoundIndex = (newSoundIndex) =>{
-        setCookie("clickSoundIndexCookie", newSoundIndex, { path: "/" });
-
+  useEffect(() => {
+    if (cookies.clickSoundIndexCookie === undefined) {
+      setCookie("clickSoundIndexCookie", 1, { path: "/" });
     }
+  }, []);
+
+  const handleRefresh = () => {
+    setRefreshKey((prevKey) => prevKey + 1);
+  };
+
+  const updateSoundIndex = (newSoundIndex) => {
+    setCookie("clickSoundIndexCookie", newSoundIndex, { path: "/" });
+  };
 
   return (
     <div className="app">
@@ -56,8 +52,16 @@ const App = () => {
         </nav>
         <Context.Provider value={cookies.clickSoundIndexCookie}>
           <Routes>
-            <Route path="/" exact element={<Main key={refreshKey}/>} />
-            <Route path="/settings" element={<Settings currentSoundIndex={cookies.clickSoundIndexCookie} updateSoundIndex={updateSoundIndex}/>} />
+            <Route path="/" exact element={<Main key={refreshKey} />} />
+            <Route
+              path="/settings"
+              element={
+                <Settings
+                  currentSoundIndex={cookies.clickSoundIndexCookie}
+                  updateSoundIndex={updateSoundIndex}
+                />
+              }
+            />
           </Routes>
         </Context.Provider>
       </Router>

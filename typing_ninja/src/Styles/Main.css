@@ -1,59 +1,65 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
 
-@import 'bootstrap/dist/css/bootstrap.min.css';
-
-.container{
-    position: relative;
-    top: 5vh;
+.container {
+  position: relative;
+  top: 5vh;
 }
-.main-content{
-    margin-top: 14vh;
+.main-content {
+  margin-top: 14vh;
 }
-.summary{
-    position: absolute;
+.summary {
+  position: absolute;
 }
-.words-amount-selection{
-    margin-bottom: 30pt;
-    padding: 0;
+.words-amount-selection {
+  margin-bottom: 30pt;
+  padding: 0;
 }
-.words-amount-selection > button{
-    padding: 0px;
+.words-amount-selection > button {
+  padding: 0px;
 }
-.hide{
-    visibility: hidden;
+.hide {
+  visibility: hidden;
 }
-.restart-div{
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.restart-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.loading-div{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.loading-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.restart-image{
-    opacity: .5;
-    scale: .8;
-    cursor: pointer;
-    transition: all .5s ease-out;
-    user-select: none;
+.restart-image {
+  opacity: 0.5;
+  scale: 0.8;
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+  user-select: none;
 }
-.restart-image:hover{
-    transform: rotate(-90deg);
-    user-select: none;
-    opacity: .5;
+.restart-image:hover {
+  transform: rotate(-90deg);
+  user-select: none;
+  opacity: 0.5;
 }
-.restart-hint{
-    display: inline;
-    color: rgba(0, 132, 255);
-    opacity: .5;
-    transition: .5s all;
-    font-family: "Comfortaa", sans-serif;
-    user-select: none;
+.restart-hint {
+  display: inline;
+  color: rgba(0, 132, 255);
+  opacity: 0.5;
+  transition: 0.5s all;
+  font-family: "Comfortaa", sans-serif;
+  user-select: none;
 }
 
-.invisible{
-    opacity: 0;
+.invisible {
+  opacity: 0;
 }
+
+
+@media only screen and (max-width: 576px) {
+    .col-xs-12{
+        width: 100%;
+    }
+  }
+  

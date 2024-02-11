@@ -4,14 +4,13 @@ import "../src/Styles/Index.css";
 
 import reportWebVitals from "./reportWebVitals";
 
-import App from './Components/App'
-
+import App from "./Components/App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <App/>
+    <App />
   </React.StrictMode>
 );
 

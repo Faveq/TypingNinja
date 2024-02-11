@@ -25,6 +25,7 @@ nav{
   color: rgb(192, 192, 192);
   user-select: none;
   font-family: "Comfortaa", sans-serif;
+  transition: all .5s;
 }
 .logo-image{
   aspect-ratio: 1/1;
@@ -47,5 +48,18 @@ nav{
   nav {
     position: fixed;
     top: 1vh;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .title {
+    display: none;
+  }
+}
+
+@media only screen and (max-height: 820px) {
+  nav {
+    position: fixed;
+    top: 3pt;
   }
 }

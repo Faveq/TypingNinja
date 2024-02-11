@@ -9,8 +9,10 @@ const useStopwatch = () => {
 
     if (isRunning) {
       interval = setInterval(() => {
-        setElapsedTime((prevElapsedTime) => prevElapsedTime + 1);
-      }, 1000);
+        setElapsedTime((prevElapsedTime) => {
+          return prevElapsedTime + 0.1;
+        });
+      }, 100);
     }
 
     return () => {

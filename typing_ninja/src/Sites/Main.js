@@ -8,9 +8,7 @@ import Summary from "../Components/Summary/Summary";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Main = (props) => {
-  const [cookies, setCookie] = useCookies([
-    "wordsAmountCookie"
-  ]);
+  const [cookies, setCookie] = useCookies(["wordsAmountCookie"]);
   const [allWords, setAllWords] = useState([]);
   const [dataReady, setDataReady] = useState(false);
   const [wordsToPass, setWordsToPass] = useState([]);
@@ -138,7 +136,7 @@ const Main = (props) => {
           clickSound={cookies.clickSoundCookie}
         />
       </div>
-      <div className="restart-div col-md-8 col-sm-12">
+      <div className="restart-div col-md-8 col-sm-12 col-xs-12">
         <img
           src={process.env.PUBLIC_URL + "/Images/restart.png"}
           alt="Restart"

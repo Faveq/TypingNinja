@@ -7,6 +7,7 @@ import Context from "./Context";
 
 const App = () => {
   const [cookies, setCookie] = useCookies(["clickSoundIndexCookie"]);
+  const [refreshKey, setRefreshKey] = useState(0);
 
     useEffect(() => {
         if(cookies.clickSoundIndexCookie === undefined)
@@ -15,6 +16,11 @@ const App = () => {
         }
         
     }, []);
+
+
+    const handleRefresh = () => {
+      setRefreshKey((prevKey) => prevKey + 1);
+    };
 
     const updateSoundIndex = (newSoundIndex) =>{
         setCookie("clickSoundIndexCookie", newSoundIndex, { path: "/" });
@@ -32,7 +38,7 @@ const App = () => {
           />
           <h1 className="title">Typing ninja</h1>
 
-          <Link to="/">
+          <Link to="/" onClick={handleRefresh}>
             <img
               src={process.env.PUBLIC_URL + "/Images/keyboard-image.png"}
               alt="Test"
@@ -50,7 +56,7 @@ const App = () => {
         </nav>
         <Context.Provider value={cookies.clickSoundIndexCookie}>
           <Routes>
-            <Route path="/" exact element={<Main />} />
+            <Route path="/" exact element={<Main key={refreshKey}/>} />
             <Route path="/settings" element={<Settings currentSoundIndex={cookies.clickSoundIndexCookie} updateSoundIndex={updateSoundIndex}/>} />
           </Routes>
         </Context.Provider>

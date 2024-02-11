@@ -2,8 +2,7 @@
     display: flex;
     flex-wrap: wrap; 
     gap: 6pt;
-
-    height: 300px;
+    height: 40vh;
     position: relative;
     align-content: flex-start;
 }

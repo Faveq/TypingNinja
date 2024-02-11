@@ -3,3 +3,19 @@
     color: rgb(0, 132, 255);
     font-family: 'Comfortaa', sans-serif;
 }
+.gross-wpm{
+    color: rgb(192, 192, 192) !important;
+}
+.crown-icon{
+    aspect-ratio: 1/1;
+    width: 32px;
+    align-self: baseline;
+}
+.pb{
+    color: rgb(192, 192, 192);
+}
+.net-wpm{
+    display: flex;
+    align-items: baseline;
+    gap: 3pt;
+}

@@ -33,12 +33,14 @@ const TypingArea = (props) => {
 
   useEffect(() => {
     window.addEventListener("keydown", handleFocus);
-    setClickSound(new Audio("Sounds/" + clickSoundsPaths[clickSoundIndex]));
-
+    if (!clickSound) {
+      setClickSound(new Audio("Sounds/" + clickSoundsPaths[clickSoundIndex]));
+    }
+  
     return () => {
       window.removeEventListener("keydown", handleFocus);
     };
-  }, []);
+  }, [clickSoundIndex, clickSound]);
 
   const changeHandler = (event) => {
     if (activeWordIndex < words.length) {

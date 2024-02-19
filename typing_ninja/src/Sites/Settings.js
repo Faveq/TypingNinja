@@ -1,5 +1,5 @@
 import "../Styles/Settings.css";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useCookies } from "react-cookie";
 /* global bootstrap */
 

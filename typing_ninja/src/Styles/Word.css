@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
 
 .word {
   margin: 0;
@@ -20,8 +20,8 @@
 .overtyped {
   color: rgba(208, 61, 8, 0.601);
 }
-.letter{
-   font-size: 1.5em;
+.letter {
+  font-size: 1.5em;
 }
 #active-letter::before {
   content: "";
@@ -34,33 +34,31 @@
 }
 
 @keyframes blink {
-   0%{
-      opacity: 100%;
-   }
-   12.5%{
-      opacity: 75%;
-   }
-   25%{
-      opacity: 50%;
-   }
-   37.5%{
-      opacity: 25%;
-   }
-   50%{
-      opacity: 0%;
-   }
-   62.5%{
-      opacity: 25%;
-   }
-   75%{
-      opacity: 50%;
-   }
-   87.5%{
-      opacity: 75%;
-   }
-   100%{
-      opacity: 100%;
-   }
-
-
+  0% {
+    opacity: 100%;
+  }
+  12.5% {
+    opacity: 75%;
+  }
+  25% {
+    opacity: 50%;
+  }
+  37.5% {
+    opacity: 25%;
+  }
+  50% {
+    opacity: 0%;
+  }
+  62.5% {
+    opacity: 25%;
+  }
+  75% {
+    opacity: 50%;
+  }
+  87.5% {
+    opacity: 75%;
+  }
+  100% {
+    opacity: 100%;
+  }
 }

@@ -1,12 +1,13 @@
-import React from 'react'
+import React from "react";
 
-const WordsCounter = (props) =>
-{
- const {wordsTypedCount, allWordsCount, className} = props
- 
- return(
-    <p className={className}>{wordsTypedCount}/{allWordsCount}</p>
- )
-}
+const WordsCounter = (props) => {
+  const { wordsTypedCount, allWordsCount, className } = props;
 
-export default WordsCounter
+  return (
+    <p className={className}>
+      {wordsTypedCount}/{allWordsCount}
+    </p>
+  );
+};
+
+export default WordsCounter;

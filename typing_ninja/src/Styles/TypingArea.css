@@ -1,8 +1,8 @@
-.typing-area{
-    display: flex;
-    flex-wrap: wrap; 
-    gap: 6pt;
-    height: 40vh;
-    position: relative;
-    align-content: flex-start;
+.typing-area {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6pt;
+  height: 40vh;
+  position: relative;
+  align-content: flex-start;
 }

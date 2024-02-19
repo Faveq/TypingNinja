@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
 
 body {
   height: 100vh;
@@ -10,39 +9,41 @@ body {
   overflow: hidden;
   font-family: "Comfortaa", sans-serif;
 }
-html body{
+html body {
   background-color: #323437 !important;
-  transition: all .3;
+  transition: all 0.3;
 }
-nav{
+nav {
   display: flex;
   position: fixed;
   top: 12vh;
   align-items: center;
-  transition: all .5s;
+  transition: all 0.5s;
 }
-.title{
+.title {
   color: rgb(192, 192, 192);
   user-select: none;
   font-family: "Comfortaa", sans-serif;
-  transition: all .5s;
+  transition: all 0.5s;
 }
-.logo-image{
+.logo-image {
   aspect-ratio: 1/1;
   user-select: none;
   width: 90px;
 }
-.settings-image, .keyboard-image{
+.settings-image,
+.keyboard-image {
   aspect-ratio: 1/1;
   user-select: none;
   width: 22px;
   margin-left: 13px;
-  opacity: .3;
+  opacity: 0.3;
   cursor: pointer;
-  transition: all .2s;
+  transition: all 0.2s;
 }
-.settings-image:hover, .keyboard-image:hover{
-  opacity: .9;
+.settings-image:hover,
+.keyboard-image:hover {
+  opacity: 0.9;
 }
 @media only screen and (max-width: 600px) {
   nav {

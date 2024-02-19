@@ -1,15 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
 
-.letter-input{
-    position: fixed;
-    background-color: rgba(255, 255, 255, 0.635);
-    border: none;
-    height: 35px;
-    caret-color: rgba(255, 255, 255, 0);
-    font-family: 'Comfortaa', sans-serif;
-    padding: 0;
-    margin: 0;
-    opacity: 0%;
-    cursor: default;
-    top: 750px;
+.letter-input {
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.635);
+  border: none;
+  height: 35px;
+  caret-color: rgba(255, 255, 255, 0);
+  font-family: "Comfortaa", sans-serif;
+  padding: 0;
+  margin: 0;
+  opacity: 0%;
+  cursor: default;
+  top: 750px;
 }

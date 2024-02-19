@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
 
-.words-counter{
-    font-family: 'Comfortaa', sans-serif;
-    color: rgb(0, 132, 255);
-    position: absolute;
-    user-select: none;
-    margin: 0;
-    top: -25px;
-    left: 1px;
-    font-size: large;
+.words-counter {
+  font-family: "Comfortaa", sans-serif;
+  color: rgb(0, 132, 255);
+  position: absolute;
+  user-select: none;
+  margin: 0;
+  top: -25px;
+  left: 1px;
+  font-size: large;
 }

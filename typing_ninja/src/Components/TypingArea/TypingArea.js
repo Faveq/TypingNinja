@@ -34,7 +34,7 @@ const TypingArea = (props) => {
   useEffect(() => {
     window.addEventListener("keydown", handleFocus);
     if (!clickSound) {
-      setClickSound(new Audio("Sounds/" + clickSoundsPaths[clickSoundIndex]));
+      setClickSound(new Audio(process.env.PUBLIC_URL + "Sounds/" + clickSoundsPaths[clickSoundIndex]));
     }
   
     return () => {
@@ -51,7 +51,7 @@ const TypingArea = (props) => {
 
   useEffect(() => {
     if (clickSoundIndex <= clickSoundsPaths.length) {
-      setClickSound(new Audio("Sounds/" + clickSoundsPaths[clickSoundIndex]));
+      setClickSound(new Audio(process.env.PUBLIC_URL + "Sounds/" + clickSoundsPaths[clickSoundIndex]));
     }
   }, [clickSoundIndex]);
 

@@ -25,7 +25,7 @@ const Main = (props) => {
     const fetchData = async () => {
       setDataReady(false);
       try {
-        const response = await fetch("/Words.json");
+        const response = await fetch(process.env.PUBLIC_URL + "/Words.json");
         const data = await response.json();
 
         if (data && Array.isArray(data)) {

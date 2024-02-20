@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const useCalculateWPM = () => {
   const [grossWPM, setGrossWPM] = useState(0);

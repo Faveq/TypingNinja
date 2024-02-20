@@ -2,6 +2,7 @@
   "name": "typing_ninja",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://Faveq.github.io/TypingNinja",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -22,7 +23,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d typing_ninja/build"
   },
   "eslintConfig": {
     "extends": [
@@ -44,6 +47,7 @@
   },
   "devDependencies": {
     "eslint": "^8.56.0",
-    "eslint-plugin-react": "^7.33.2"
+    "eslint-plugin-react": "^7.33.2",
+    "gh-pages": "^6.1.1"
   }
 }

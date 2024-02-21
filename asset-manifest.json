@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/TypingNinja/static/css/main.0508e603.css",
-    "main.js": "/TypingNinja/static/js/main.36cbdcfb.js",
+    "main.js": "/TypingNinja/static/js/main.ad9a3a49.js",
     "static/js/787.b7e59b12.chunk.js": "/TypingNinja/static/js/787.b7e59b12.chunk.js",
     "index.html": "/TypingNinja/index.html",
     "main.0508e603.css.map": "/TypingNinja/static/css/main.0508e603.css.map",
-    "main.36cbdcfb.js.map": "/TypingNinja/static/js/main.36cbdcfb.js.map",
+    "main.ad9a3a49.js.map": "/TypingNinja/static/js/main.ad9a3a49.js.map",
     "787.b7e59b12.chunk.js.map": "/TypingNinja/static/js/787.b7e59b12.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0508e603.css",
-    "static/js/main.36cbdcfb.js"
+    "static/js/main.ad9a3a49.js"
   ]
 }

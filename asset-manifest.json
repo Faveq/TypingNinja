@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.0508e603.css",
-    "main.js": "/static/js/main.64f0a9fd.js",
-    "static/js/787.b7e59b12.chunk.js": "/static/js/787.b7e59b12.chunk.js",
-    "index.html": "/index.html",
-    "main.0508e603.css.map": "/static/css/main.0508e603.css.map",
-    "main.64f0a9fd.js.map": "/static/js/main.64f0a9fd.js.map",
-    "787.b7e59b12.chunk.js.map": "/static/js/787.b7e59b12.chunk.js.map"
+    "main.css": "/typingninja/static/css/main.0508e603.css",
+    "main.js": "/typingninja/static/js/main.94e3ceb7.js",
+    "static/js/787.b7e59b12.chunk.js": "/typingninja/static/js/787.b7e59b12.chunk.js",
+    "index.html": "/typingninja/index.html",
+    "main.0508e603.css.map": "/typingninja/static/css/main.0508e603.css.map",
+    "main.94e3ceb7.js.map": "/typingninja/static/js/main.94e3ceb7.js.map",
+    "787.b7e59b12.chunk.js.map": "/typingninja/static/js/787.b7e59b12.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0508e603.css",
-    "static/js/main.64f0a9fd.js"
+    "static/js/main.94e3ceb7.js"
   ]
 }

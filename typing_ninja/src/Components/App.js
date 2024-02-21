@@ -10,6 +10,7 @@ const App = () => {
   const [refreshKey, setRefreshKey] = useState(0);
 
   useEffect(() => {
+    console.log("dziala")
     if (cookies.clickSoundIndexCookie === undefined) {
       setCookie("clickSoundIndexCookie", 1, { path: "/" });
     }
@@ -52,9 +53,9 @@ const App = () => {
         </nav>
         <Context.Provider value={cookies.clickSoundIndexCookie}>
           <Routes>
-            <Route path="/" exact element={<Main key={refreshKey} />} />
+            <Route path="/TypingNinja" exact element={<Main key={refreshKey} />} />
             <Route
-              path="/settings"
+              path="/TypingNinja/settings"
               element={
                 <Settings
                   currentSoundIndex={cookies.clickSoundIndexCookie}

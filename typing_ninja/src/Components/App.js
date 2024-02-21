@@ -10,7 +10,6 @@ const App = () => {
   const [refreshKey, setRefreshKey] = useState(0);
 
   useEffect(() => {
-    console.log(process.env.PUBLIC_URL)
     if (cookies.clickSoundIndexCookie === undefined) {
       setCookie("clickSoundIndexCookie", 1, { path: "/" });
     }

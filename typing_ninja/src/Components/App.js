@@ -10,7 +10,6 @@ const App = () => {
   const [refreshKey, setRefreshKey] = useState(0);
 
   useEffect(() => {
-    console.log("dziala")
     if (cookies.clickSoundIndexCookie === undefined) {
       setCookie("clickSoundIndexCookie", 1, { path: "/" });
     }
@@ -35,7 +34,7 @@ const App = () => {
           />
           <h1 className="title">Typing ninja</h1>
 
-          <Link to="/" onClick={handleRefresh}>
+          <Link to="/TypingNinja" onClick={handleRefresh}>
             <img
               src={process.env.PUBLIC_URL + "/Images/keyboard-image.png"}
               alt="Test"

@@ -10,6 +10,7 @@ const App = () => {
   const [refreshKey, setRefreshKey] = useState(0);
 
   useEffect(() => {
+    console.log(process.env.PUBLIC_URL)
     if (cookies.clickSoundIndexCookie === undefined) {
       setCookie("clickSoundIndexCookie", 1, { path: "/" });
     }
@@ -42,7 +43,7 @@ const App = () => {
             />
           </Link>
 
-          <Link to="/settings">
+          <Link to="/TypingNinja/settings">
             <img
               src={process.env.PUBLIC_URL + "/Images/settings-image.png"}
               alt="Settings"

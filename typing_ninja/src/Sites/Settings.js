@@ -20,7 +20,6 @@ const Settings = (props) => {
       }
     }
     const toastBootstrap = bootstrap.Toast.getOrCreateInstance(cookieToast);
-    console.log(toastBootstrap);
     toastBootstrap.hide();
     toastBootstrap.show();
   };

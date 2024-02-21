@@ -43,14 +43,14 @@ const App = () => {
             />
           </Link>
 
-          <Link to="/TypingNinja/settings" target="blank">
+          <Link to="/TypingNinja/settings">
             <img
               src={process.env.PUBLIC_URL + "/Images/settings-image.png"}
               alt="Settings"
               className="settings-image"
             />
           </Link>
-          <Link to="https://github.com/Faveq/TypingNinja">
+          <Link to="https://github.com/Faveq/TypingNinja" target="blank">
           <img
               src={process.env.PUBLIC_URL + "/Images/github-image.png"}
               alt="Github"

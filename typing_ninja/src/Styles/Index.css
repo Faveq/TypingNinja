@@ -32,7 +32,8 @@ nav {
   width: 90px;
 }
 .settings-image,
-.keyboard-image {
+.keyboard-image,
+.github-image {
   aspect-ratio: 1/1;
   user-select: none;
   width: 22px;
@@ -42,9 +43,12 @@ nav {
   transition: all 0.2s;
 }
 .settings-image:hover,
-.keyboard-image:hover {
+.keyboard-image:hover,
+.github-image:hover {
   opacity: 0.9;
 }
+
+
 @media only screen and (max-width: 600px) {
   nav {
     position: fixed;

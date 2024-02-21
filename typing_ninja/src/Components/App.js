@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import "../Styles/App.css"
 import Main from "../Sites/Main";
 import Settings from "../Sites/Settings";
 import Context from "./Context";
@@ -42,13 +43,20 @@ const App = () => {
             />
           </Link>
 
-          <Link to="/TypingNinja/settings">
+          <Link to="/TypingNinja/settings" target="blank">
             <img
               src={process.env.PUBLIC_URL + "/Images/settings-image.png"}
               alt="Settings"
               className="settings-image"
             />
           </Link>
+          <Link to="https://github.com/Faveq/TypingNinja">
+          <img
+              src={process.env.PUBLIC_URL + "/Images/github-image.png"}
+              alt="Github"
+              className="github-image"
+            />
+            </Link>
         </nav>
         <Context.Provider value={cookies.clickSoundIndexCookie}>
           <Routes>
@@ -64,6 +72,7 @@ const App = () => {
             />
           </Routes>
         </Context.Provider>
+       
       </Router>
     </div>
   );
